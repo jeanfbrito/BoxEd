@@ -1,0 +1,24 @@
+<BoxLevel>
+  <Meta>
+    <Level Name="Level 1" />
+    <Author Author="Unknown Author" />
+    <Version App="0.1" />
+  </Meta>
+  <Data>
+    <PointLight Position="32,-3,0" System.Single.Radius="10" System.Single.Intensity="1" />
+    <PointLight Position="12,5,0" System.Single.Radius="10" System.Single.Intensity="1" />
+    <PointLight Position="-3.5,6,0" System.Single.Radius="10" System.Single.Intensity="1" />
+    <Cube Position="39,16,0" System.Single.Width="20" System.Single.Height="19" />
+    <Cube Position="-3.5,-10.5,0" System.Single.Width="9.5" System.Single.Height="22.5" />
+    <Cube Position="-3,19,0" System.Single.Width="9.5" System.Single.Height="22.5" />
+    <Spawnpoint Position="-3.5,1.5,0" />
+    <Cube Position="12,-13.5,0" System.Single.Width="9.5" System.Single.Height="22.5" />
+    <Cube Position="12,17.5,0" System.Single.Width="9.5" System.Single.Height="22.5" />
+    <Cube Position="36.5,-18,0" System.Single.Width="27" System.Single.Height="25.5" />
+    <Cube Position="37,-2,0" System.Single.Width="5" System.Single.Height="7" />
+    <Cube Position="29.5,2.5,0" System.Single.Width="1" System.Single.Height="8.5" />
+    <KillTrigger Position="19.5,-12.5,0" System.Single.Width="100" System.Single.Height="2" />
+    <Checkpoint Position="12,0.5,0" System.Single.Width="5" System.Single.Height="5" />
+    <Checkpoint Position="37,4,0" System.Single.Width="4" System.Single.Height="4.5" />
+  </Data>
+</BoxLevel>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{052293B7-56D0-32DB-1D55-67CE3B1A71F9}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_3_5_0;UNITY_3_5;UNITY_EDITOR;ENABLE_PROFILER;UNITY_STANDALONE_WIN;ENABLE_GENERICS;ENABLE_DUCK_TYPING;ENABLE_TERRAIN;ENABLE_MOVIES;ENABLE_WEBCAM;ENABLE_MICROPHONE;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW;ENABLE_SUBSTANCE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\BoxEd\Attributes.cs" />
+     <Compile Include="Assets\BoxEd\Behaviours\EditorController.cs" />
+     <Compile Include="Assets\BoxEd\Behaviours\MenuManager.cs" />
+     <Compile Include="Assets\BoxEd\Behaviours\References.cs" />
+     <Compile Include="Assets\BoxEd\EditorApp.cs" />
+     <Compile Include="Assets\BoxEd\Entity.cs" />
+     <Compile Include="Assets\BoxEd\Extensions.cs" />
+     <Compile Include="Assets\BoxEd\LevelFormat.cs" />
+     <Compile Include="Assets\BoxEd\Manager.cs" />
+     <Compile Include="Assets\BoxEd\Menus\File.cs" />
+     <Compile Include="Assets\BoxEd\Menus\Menu.cs" />
+     <Compile Include="Assets\BoxEd\Menus\Settings.cs" />
+     <Compile Include="Assets\Entities\Base\HelperEntity.cs" />
+     <Compile Include="Assets\Entities\Base\ResizeableHelper.cs" />
+     <Compile Include="Assets\Entities\Geometry\Cube.cs" />
+     <Compile Include="Assets\Entities\Lights\BaseLight.cs" />
+     <Compile Include="Assets\Entities\Lights\DirectionalLight.cs" />
+     <Compile Include="Assets\Entities\Lights\PointLight.cs" />
+     <Compile Include="Assets\Entities\Lights\SpotLight.cs" />
+     <Compile Include="Assets\Entities\Network\NetworkInterpolatedTransform.cs" />
+     <Compile Include="Assets\Entities\Network\NetworkLevelLoader.cs" />
+     <Compile Include="Assets\Entities\Network\NetworkRigidbody.cs" />
+     <Compile Include="Assets\Entities\Physics\CrateHelper.cs" />
+     <Compile Include="Assets\Entities\Player\PlayerAnimation.cs" />
+     <Compile Include="Assets\Entities\Player\PlayerCamera.cs" />
+     <Compile Include="Assets\Entities\Player\PlayerControl.cs" />
+     <Compile Include="Assets\Entities\Player\Spawnpoint.cs" />
+     <Compile Include="Assets\Entities\Triggers\Checkpoint.cs" />
+     <Compile Include="Assets\Entities\Triggers\KillTrigger.cs" />
+     <Compile Include="Assets\Entities\Triggers\Trigger.cs" />
+     <Compile Include="Assets\Localisation\Dictionary.cs" />
+     <Compile Include="Assets\Localisation\Localiser.cs" />
+     <None Include="Assets\Entities\Global\Projectors\Guidelines.txt" />
+     <None Include="Assets\Entities\Global\Projectors\Sources\Shaders\Projector Multiply.shader" />
+     <None Include="Assets\Localisation\Resources\Languages.xml" />
+     <None Include="Assets\Localisation\Resources\Editor.xml" />
+     <None Include="Assets\Entities\Global\Projectors\Sources\Shaders\Projector Light.shader" />
+     <None Include="Assets\Resources\Level 1.box.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
