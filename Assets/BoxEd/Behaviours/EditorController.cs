@@ -112,6 +112,17 @@ public class EditorController : MonoBehaviour
 	private bool _movingEntity;
 	private int _planeLayer;
 
+	private Entity _entity;
+	private bool _entitySelected;
+
+	private bool _posSelected;
+	private Vector3 _startingPos;
+
+	private string _entityName;
+	private bool _entitySpawned;
+
+	private EntityCategory _selectedCategory = EntityCategory.Geometry;
+
 	private IEnumerable<EditorState> _states = Enum.GetValues(typeof(EditorState)).Cast<EditorState>();
 	private Dictionary<EntityCategory, Dictionary<Type, string>> _entitiesByCategory;
 	#endregion
@@ -153,12 +164,6 @@ public class EditorController : MonoBehaviour
 			}
 		}
 	}
-
-	private Entity _entity;
-	private bool _entitySelected;
-
-	private bool _posSelected;
-	private Vector3 _startingPos;
 
 	private void Update()
 	{
@@ -286,7 +291,7 @@ public class EditorController : MonoBehaviour
 		if(MenuManager.IsMenuOpen)
 			return;
 
-		GUI.skin = References.Instance.guiSkin;
+		//GUI.skin = References.Instance.guiSkin;
 
 		GUILayout.BeginHorizontal();
 		GUILayout.Space(10);
@@ -326,10 +331,6 @@ public class EditorController : MonoBehaviour
 		}
 	}
 
-	private EntityCategory _selectedCategory = EntityCategory.Geometry;
-
-	private string _entityName;
-
 	private void DrawEditWindow(int id)
 	{
 		var entity = _entity;
@@ -368,8 +369,6 @@ public class EditorController : MonoBehaviour
 				propertyPair.Key.SetValue(entity, (int)GUILayout.HorizontalSlider((int)propertyPair.Key.GetValue(entity, null), attr.Min, attr.Max), null);
 		}
 	}
-
-	private bool _entitySpawned;
 
 	private void DrawCreationWindow(int id)
 	{

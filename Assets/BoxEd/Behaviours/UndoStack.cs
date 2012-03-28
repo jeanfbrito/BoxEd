@@ -19,10 +19,10 @@ namespace BoxEd
 
 		public static void Undo()
 		{
-			if(_stack.Count < 1)
+			if(ActionStack.Count < 1)
 				return;
 
-			var action = _stack.Pop();
+			var action = ActionStack.Pop();
 			action.Revert();
 		}
 	}
@@ -40,7 +40,8 @@ namespace BoxEd
 
 		public override void Revert()
 		{
-			Entity.transform.Translate(-Movement);
+			if(Entity != null)
+				Entity.transform.Translate(-Movement);
 		}
 	}
 }
