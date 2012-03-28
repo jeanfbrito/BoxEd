@@ -48,6 +48,7 @@
      <Compile Include="Assets\BoxEd\Behaviours\EditorController.cs" />
      <Compile Include="Assets\BoxEd\Behaviours\MenuManager.cs" />
      <Compile Include="Assets\BoxEd\Behaviours\References.cs" />
+     <Compile Include="Assets\BoxEd\Behaviours\UndoStack.cs" />
      <Compile Include="Assets\BoxEd\EditorApp.cs" />
      <Compile Include="Assets\BoxEd\Entity.cs" />
      <Compile Include="Assets\BoxEd\Extensions.cs" />

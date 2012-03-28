@@ -157,14 +157,27 @@ public class EditorController : MonoBehaviour
 	private Entity _entity;
 	private bool _entitySelected;
 
+	private bool _posSelected;
+	private Vector3 _startingPos;
+
 	private void Update()
 	{
 		#region This is old and horrible and fugly BUT it works.
+
+		if((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftApple)) && Input.GetKeyDown(KeyCode.Z))
+			ActionManager.Undo();
 
 		if(Input.GetMouseButtonUp(0))
 		{
 			_entitySpawned = false;
 			_movingEntity = false;
+			_posSelected = false;
+
+			if(_entity != null && _entitySelected)
+			{
+				Editor.Log("Adding a new move action to the stack");
+				ActionManager.ActionStack.Push(new MoveAction { Entity = _entity, Movement = _entity.transform.position - _startingPos });
+			}
 		}
 
 		if(IsIngame)
@@ -219,6 +232,12 @@ public class EditorController : MonoBehaviour
 			{
 				_entitySelected = true;
 				_entity = Entity.SelectedEntity = rayEntity;
+
+				if(!_posSelected)
+				{
+					_posSelected = true;
+					_startingPos = _entity.transform.position;
+				}
 			}
 		}
 		#endregion
