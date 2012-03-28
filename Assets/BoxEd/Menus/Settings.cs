@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BoxEd.Gui
 {
-	[Menu("Settings", Priority = 2)]
+	[Menu("Settings", Priority = 4)]
 	public class SettingsMenu : Menu
 	{
 		public override void OnLoad()

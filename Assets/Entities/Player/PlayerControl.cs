@@ -73,9 +73,11 @@ public class PlayerControl : MonoBehaviour
 
 	public void Kill()
 	{
-		this.transform.position = Checkpoint.CurrentCheckpoint != null ? Checkpoint.CurrentCheckpoint.transform.position :
+		transform.position = Checkpoint.CurrentCheckpoint != null ? Checkpoint.CurrentCheckpoint.transform.position :
 			LevelManager.Find<Spawnpoint>().Count() > 0 ? LevelManager.Find<Spawnpoint>().First().transform.position :
 			Vector3.zero;
+
+		rigidbody.velocity = Vector3.zero;
 	}
 
 	void Update()

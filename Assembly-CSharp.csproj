@@ -55,6 +55,7 @@
      <Compile Include="Assets\BoxEd\Manager.cs" />
      <Compile Include="Assets\BoxEd\Menus\Developer.cs" />
      <Compile Include="Assets\BoxEd\Menus\File.cs" />
+     <Compile Include="Assets\BoxEd\Menus\LevelData.cs" />
      <Compile Include="Assets\BoxEd\Menus\Menu.cs" />
      <Compile Include="Assets\BoxEd\Menus\Settings.cs" />
      <Compile Include="Assets\Entities\Base\HelperEntity.cs" />
