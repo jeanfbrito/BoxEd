@@ -33,16 +33,19 @@ namespace BoxEd
 			OnEnableHelpers();
 		}
 
-		private bool ValidateProperty(PropertyInfo property, Transforms restrictions)
+		private bool ValidateProperty(PropertyInfo property, Transforms enabledTransforms)
 		{
+			//Attempt to get the name of the property as a Transforms member
+			//Return true if it's enabled for this entity
 			try
 			{
 				var flags = (Transforms)Enum.Parse(typeof(Transforms), property.Name);
-				return flags.HasFlag(restrictions);
+				return enabledTransforms.HasFlag(flags);
 			}
+			//If it's not a Transforms member, then we should accept it
 			catch(ArgumentException)
 			{
-				return false;
+				return true;
 			}
 		}
 
