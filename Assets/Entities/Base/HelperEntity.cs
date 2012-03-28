@@ -21,9 +21,9 @@ public class EntityHelper : Entity
 		gameObject.layer = LayerMask.NameToLayer("Unlit");
 	}
 
-	public IEnumerator Fadeout(bool fadeout)
+	public IEnumerator Fade(bool fadeOut)
 	{
-		if(fadeout)
+		if(fadeOut)
 		{
 			while(renderer.material.color.a > 0)
 			{

@@ -1,7 +1,7 @@
 ﻿using BoxEd;
 using UnityEngine;
 
-[Entity("Checkpoint", EntityCategory.Triggers)]
+[Entity("Checkpoint", EntityCategory.Player)]
 public class Checkpoint : Trigger
 {
 	public static Checkpoint CurrentCheckpoint { get; set; }

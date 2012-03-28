@@ -1,6 +1,4 @@
-﻿using System;
-using BoxEd;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Trigger : EntityHelper
 {

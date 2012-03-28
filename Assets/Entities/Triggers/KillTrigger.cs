@@ -1,7 +1,7 @@
 ﻿using BoxEd;
 using UnityEngine;
 
-[Entity("Kill Trigger", EntityCategory.Triggers)]
+[Entity("Kill Trigger", EntityCategory.Player)]
 public class KillTrigger : Trigger
 {
 	public override void OnSpawn()

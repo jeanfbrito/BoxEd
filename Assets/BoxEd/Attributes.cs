@@ -52,7 +52,7 @@ namespace BoxEd
 		Height = 2,
 		Depth = 4,
 		Rotation = 8,
-		Transform = Width | Height | Depth,
-		All = Transform | Rotation
+		Scale = Width | Height | Depth,
+		All = Scale | Rotation
 	}
 }

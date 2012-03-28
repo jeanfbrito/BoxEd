@@ -76,7 +76,7 @@ public class EditorController : MonoBehaviour
 			
 				EntityHelper helper;
 				if((helper = ent as EntityHelper) != null)
-					helper.StartCoroutine(helper.Fadeout(!value));
+					helper.StartCoroutine(helper.Fade(!value));
 			}
 
 			_instance.StartCoroutine(FadeGrid(!value));
