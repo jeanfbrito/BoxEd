@@ -41,7 +41,7 @@ namespace BoxEd
 		public override void Revert()
 		{
 			if(Entity != null)
-				Entity.transform.Translate(-Movement);
+				Entity.transform.Translate(-Movement, Space.World);
 		}
 	}
 }
