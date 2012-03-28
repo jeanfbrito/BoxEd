@@ -1,7 +1,7 @@
 ﻿using BoxEd;
 using UnityEngine;
 
-[Entity("Spawn Point", EntityCategory.Player, RestrictedDefaults.All)]
+[Entity("Spawn Point", EntityCategory.Player, Transforms.All)]
 public class Spawnpoint : EntityHelper
 {
 	public override void OnSpawn()

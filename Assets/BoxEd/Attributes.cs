@@ -34,25 +34,28 @@ namespace BoxEd
 	{
 		public string Name { get; set; }
 		public EntityCategory Category { get; set; }
-		public RestrictedDefaults Restrictions { get; set; }
+		public Transforms EnabledTransforms { get; set; }
 
-		public EntityAttribute(string name, EntityCategory category = EntityCategory.Misc, RestrictedDefaults restrictions = RestrictedDefaults.None)
+		public EntityAttribute(string name, EntityCategory category = EntityCategory.Misc, Transforms transforms = Transforms.None)
 		{
 			Name = name;
 			Category = category;
-			Restrictions = restrictions;
+			EnabledTransforms = transforms;
 		}
 	}
 
 	[Flags]
-	public enum RestrictedDefaults
+	public enum Transforms
 	{
 		None = 0,
 		Width = 1,
 		Height = 2,
 		Depth = 4,
-		Rotation = 8,
+		RotationX = 8,
+		RotationY = 16,
+		RotationZ = 32,
 		Scale = Width | Height | Depth,
+		Rotation = RotationX | RotationY | RotationZ,
 		All = Scale | Rotation
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using BoxEd;
 
-[Entity("Spot Light", EntityCategory.Lights, RestrictedDefaults.Scale)]
+[Entity("Spot Light", EntityCategory.Lights)]
 public class SpotLight : PointLight
 {
 	[EntityProperty(Min = 0, Max = 180)]

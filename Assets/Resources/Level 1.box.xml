@@ -5,23 +5,23 @@
     <Version App="0.1" />
   </Meta>
   <Data>
-    <SpotLight Position="12,7.5,0" System.Int32.FieldOfView="52" System.Single.Radius="16.32911" System.Single.Intensity="1.810127" System.Single.Width="0.5" System.Single.Height="0.5" System.Single.Depth="0.5" System.Int32.Rotation="0" />
-    <SpotLight Position="-3,7.5,0" System.Int32.FieldOfView="77" System.Single.Radius="14.43038" System.Single.Intensity="1" System.Single.Width="0.5" System.Single.Height="0.5" System.Single.Depth="0.5" System.Int32.Rotation="0" />
-    <CrateHelper Position="-29.5,5.5,0" System.Int32.Mass="100" System.Single.Width="2.5" System.Single.Height="2.5" System.Single.Depth="2.5" System.Int32.Rotation="0" />
-    <Cube Position="-26,2.5,0" System.Single.Width="12.5" System.Single.Height="1" System.Single.Depth="11" System.Int32.Rotation="0" />
-    <Cube Position="-14,1.5,0" System.Single.Width="12.5" System.Single.Height="0.5" System.Single.Depth="1.5" System.Int32.Rotation="170" />
-    <PointLight Position="32,-3,0" System.Single.Radius="10" System.Single.Intensity="1" System.Single.Width="0.5" System.Single.Height="0.5" System.Single.Depth="0.5" System.Int32.Rotation="0" />
-    <Cube Position="39,17.5,0" System.Single.Width="20" System.Single.Height="19" System.Single.Depth="2" System.Int32.Rotation="0" />
-    <Cube Position="-3.5,-10.5,0" System.Single.Width="9.5" System.Single.Height="22.5" System.Single.Depth="2" System.Int32.Rotation="0" />
-    <Cube Position="-3,19,0" System.Single.Width="9.5" System.Single.Height="22.5" System.Single.Depth="2" System.Int32.Rotation="0" />
-    <Spawnpoint Position="-24.5,5,0" System.Single.Width="1" System.Single.Height="1" System.Single.Depth="1" System.Int32.Rotation="0" />
-    <Cube Position="12,-13.5,0" System.Single.Width="9.5" System.Single.Height="22.5" System.Single.Depth="2" System.Int32.Rotation="0" />
-    <Cube Position="12,19,0" System.Single.Width="9.5" System.Single.Height="22.5" System.Single.Depth="2" System.Int32.Rotation="0" />
-    <Cube Position="36.5,-18,0" System.Single.Width="27" System.Single.Height="25.5" System.Single.Depth="2" System.Int32.Rotation="0" />
-    <Cube Position="37,-2,0" System.Single.Width="5" System.Single.Height="7" System.Single.Depth="2" System.Int32.Rotation="0" />
-    <Cube Position="29.5,4,0" System.Single.Width="1" System.Single.Height="8.5" System.Single.Depth="2" System.Int32.Rotation="0" />
-    <KillTrigger Position="19.5,-12.5,0" System.Single.Width="100" System.Single.Height="2" System.Single.Depth="1" System.Int32.Rotation="0" />
-    <Checkpoint Position="26.5,-2.5,0" System.Single.Width="5" System.Single.Height="5.5" System.Single.Depth="1" System.Int32.Rotation="0" />
-    <Checkpoint Position="37,4.5,0" System.Single.Width="4" System.Single.Height="7" System.Single.Depth="1" System.Int32.Rotation="0" />
+    <Checkpoint Position="37,4.5,0" System.Single.Width="4" System.Single.Height="7" System.Single.Depth="1" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <Checkpoint Position="26.5,-2.5,0" System.Single.Width="5" System.Single.Height="5.5" System.Single.Depth="1" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <KillTrigger Position="19.5,-12.5,0" System.Single.Width="100" System.Single.Height="2" System.Single.Depth="1" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <Cube Position="29.5,4,0" System.Single.Width="1" System.Single.Height="8.5" System.Single.Depth="2" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <Cube Position="37,-2,0" System.Single.Width="5" System.Single.Height="7" System.Single.Depth="2" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <Cube Position="36.5,-18,0" System.Single.Width="27" System.Single.Height="25.5" System.Single.Depth="2" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <Cube Position="12,19,0" System.Single.Width="9.5" System.Single.Height="22.5" System.Single.Depth="2" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <Cube Position="12,-13.5,0" System.Single.Width="9.5" System.Single.Height="22.5" System.Single.Depth="2" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <Spawnpoint Position="-24.5,5,0" System.Single.Width="1" System.Single.Height="1" System.Single.Depth="1" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <Cube Position="-3,19,0" System.Single.Width="9.5" System.Single.Height="22.5" System.Single.Depth="2" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <Cube Position="-3.5,-10.5,0" System.Single.Width="9.5" System.Single.Height="22.5" System.Single.Depth="2" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <Cube Position="39,17.5,0" System.Single.Width="20" System.Single.Height="19" System.Single.Depth="2" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <PointLight Position="32,-3,0" System.Single.Radius="10" System.Single.Intensity="1" System.Single.Width="0.5" System.Single.Height="0.5" System.Single.Depth="0.5" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <Cube Position="-14,1.5,0" System.Single.Width="12.5" System.Single.Height="0.5" System.Single.Depth="1.5" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="170" />
+    <Cube Position="-26,2.5,0" System.Single.Width="12.5" System.Single.Height="1" System.Single.Depth="11" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <CrateHelper Position="-29.5,5.5,0" System.Int32.Mass="100" System.Single.Width="2.5" System.Single.Height="2.5" System.Single.Depth="2.5" System.Int32.RotationX="0" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <SpotLight Position="-3,7.5,0" System.Int32.FieldOfView="77" System.Single.Radius="14.43038" System.Single.Intensity="1" System.Single.Width="0.5" System.Single.Height="0.5" System.Single.Depth="0.5" System.Int32.RotationX="90" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
+    <SpotLight Position="12,7.5,0" System.Int32.FieldOfView="52" System.Single.Radius="16.32911" System.Single.Intensity="1.810127" System.Single.Width="0.5" System.Single.Height="0.5" System.Single.Depth="0.5" System.Int32.RotationX="90" System.Int32.RotationY="0" System.Int32.RotationZ="0" />
   </Data>
 </BoxLevel>

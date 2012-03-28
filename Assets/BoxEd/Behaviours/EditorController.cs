@@ -256,7 +256,7 @@ public class EditorController : MonoBehaviour
 				{
 					if(hasEntity)
 					{
-						if(Input.GetKeyDown(KeyCode.C))
+						if((Input.GetKey(KeyCode.LeftApple) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.C))
 							_entity = Entity.Create<Entity>(_mousePos, _entity.transform.rotation.eulerAngles, _entity.transform.localScale, _entity.GetType());
 						else if(Input.GetKeyDown(KeyCode.Delete) || Input.GetKeyDown(KeyCode.Backspace))
 								Entity.Destroy(_entity.gameObject);
@@ -291,7 +291,7 @@ public class EditorController : MonoBehaviour
 		if(MenuManager.IsMenuOpen)
 			return;
 
-		//GUI.skin = References.Instance.guiSkin;
+		GUI.skin = References.Instance.guiSkin;
 
 		GUILayout.BeginHorizontal();
 		GUILayout.Space(10);

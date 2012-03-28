@@ -25,7 +25,7 @@ namespace BoxEd
 			foreach(var prop in GetType().GetProperties())
 			{
 				EntityPropertyAttribute propAttr;
-				if(prop.TryGetAttribute(out propAttr) && ValidateProperty(prop, attr.Restrictions))
+				if(prop.TryGetAttribute(out propAttr) && ValidateProperty(prop, attr.EnabledTransforms))
 					Properties.Add(prop, propAttr);
 			}
 
@@ -33,16 +33,16 @@ namespace BoxEd
 			OnEnableHelpers();
 		}
 
-		private bool ValidateProperty(PropertyInfo property, RestrictedDefaults restrictions)
+		private bool ValidateProperty(PropertyInfo property, Transforms restrictions)
 		{
 			try
 			{
-				var flags = (RestrictedDefaults)Enum.Parse(typeof(RestrictedDefaults), property.Name);
-				return !flags.HasFlag(restrictions);
+				var flags = (Transforms)Enum.Parse(typeof(Transforms), property.Name);
+				return flags.HasFlag(restrictions);
 			}
 			catch(ArgumentException)
 			{
-				return true;
+				return false;
 			}
 		}
 
@@ -171,7 +171,35 @@ namespace BoxEd
 		}
 
 		[EntityProperty(Min = 0, Max = 360)]
-		public int Rotation
+		public int RotationX
+		{
+			get
+			{
+				return (int)transform.rotation.eulerAngles.x;
+			}
+			set
+			{
+				var rot = transform.rotation.eulerAngles;
+				transform.rotation = Quaternion.Euler(new Vector3((int)Math.Round(value / 5f) * 5, rot.y, rot.z));
+			}
+		}
+
+		[EntityProperty(Min = 0, Max = 360)]
+		public int RotationY
+		{
+			get
+			{
+				return (int)transform.rotation.eulerAngles.y;
+			}
+			set
+			{
+				var rot = transform.rotation.eulerAngles;
+				transform.rotation = Quaternion.Euler(new Vector3(rot.x, (int)Math.Round(value / 5f) * 5, rot.z));
+			}
+		}
+
+		[EntityProperty(Min = 0, Max = 360)]
+		public int RotationZ
 		{
 			get
 			{
@@ -180,7 +208,7 @@ namespace BoxEd
 			set
 			{
 				var rot = transform.rotation.eulerAngles;
-				transform.rotation = Quaternion.Euler(new Vector3(rot.x, rot.y, (int)System.Math.Round(value / 5f) * 5));
+				transform.rotation = Quaternion.Euler(new Vector3(rot.x, rot.y, (int)Math.Round(value / 5f) * 5));
 			}
 		}
 		#endregion

@@ -48,7 +48,6 @@
      <Compile Include="Assets\BoxEd\Behaviours\EditorController.cs" />
      <Compile Include="Assets\BoxEd\Behaviours\MenuManager.cs" />
      <Compile Include="Assets\BoxEd\Behaviours\References.cs" />
-     <Compile Include="Assets\BoxEd\Behaviours\UndoStack.cs" />
      <Compile Include="Assets\BoxEd\EditorApp.cs" />
      <Compile Include="Assets\BoxEd\Entity.cs" />
      <Compile Include="Assets\BoxEd\Extensions.cs" />
@@ -59,6 +58,7 @@
      <Compile Include="Assets\BoxEd\Menus\LevelData.cs" />
      <Compile Include="Assets\BoxEd\Menus\Menu.cs" />
      <Compile Include="Assets\BoxEd\Menus\Settings.cs" />
+     <Compile Include="Assets\BoxEd\UndoStack.cs" />
      <Compile Include="Assets\Entities\Base\HelperEntity.cs" />
      <Compile Include="Assets\Entities\Geometry\Cube.cs" />
      <Compile Include="Assets\Entities\Lights\BaseLight.cs" />
