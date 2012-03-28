@@ -19,7 +19,7 @@ namespace BoxEd
 		/// Serialises the currently loaded level into an .xml file in the levels folder.
 		/// </summary>
 		/// <param name="levelName">The name of the level to load.</param>
-		public static void SaveLevel(string levelName)
+		public static void SaveLevel(string levelName, bool useFullpath = false)
 		{
 			//Construct a new document and create the root node
 			var document = new XmlDocument();
@@ -71,11 +71,21 @@ namespace BoxEd
 				data.AppendChild(element);
 			}
 
-			if(!Directory.Exists(LevelManager.LevelFolder))
-				Directory.CreateDirectory(LevelManager.LevelFolder);
+			if(!useFullpath)
+			{
+				if(!Directory.Exists(LevelManager.LevelFolder))
+					Directory.CreateDirectory(LevelManager.LevelFolder);
 
-			Editor.Log("Saving {0} to {1}", document.InnerXml, LevelManager.GetFilepath(levelName));
-			document.Save(LevelManager.GetFilepath(levelName));
+				Editor.Log("Saving to {0}. Content is: {1}", LevelManager.GetFilepath(levelName), document.InnerXml);
+				document.Save(LevelManager.GetFilepath(levelName));
+			}
+#if UNITY_EDITOR
+			else
+			{
+				Editor.Log("Updating the webplayer demo. Content is: {0}", document.InnerXml);
+				document.Save(Path.Combine(Application.dataPath, @"Resources\Level 1.box.xml"));
+			}
+#endif
 		}
 
 		/// <summary>
