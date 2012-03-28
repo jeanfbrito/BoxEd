@@ -9,4 +9,4 @@ You can create, load and play levels with a limited set of entities.
 Hopefully not. It's stolen from the previous iteration of the project and serves as a nice test player in the meantime.
 
 ### I'm crazy, can I use your code in my project?
-Sure, but please don't simply steal the lot and brand it as your own. Just learn from it ;)
+You can use any of my work here in non-commercial projects provided you place the same restriction on any derivative works. That, and don't just compile it and brand as it your own with no real changes. _That's just silly._
