@@ -1,7 +1,7 @@
 using BoxEd;
 using UnityEngine;
 
-[Entity("Point Light", EntityCategory.Lights)]
+[Entity("Point Light", EntityCategory.Lights, RestrictedDefaults.All)]
 public class PointLight : BaseLight
 {
 	[EntityProperty(PropertyEditorType.Slider)]

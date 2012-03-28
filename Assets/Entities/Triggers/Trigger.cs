@@ -2,7 +2,7 @@
 using BoxEd;
 using UnityEngine;
 
-public class Trigger : ResizeableHelper
+public class Trigger : EntityHelper
 {
 	public override void OnSpawn()
 	{

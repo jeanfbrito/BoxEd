@@ -60,4 +60,12 @@ namespace BoxEd
 			return component != null;
 		}
 	}
+
+	public static class EnumExtensions
+	{
+		public static bool HasFlag(this Enum value, Enum flag)
+		{
+			return (Convert.ToInt32(value) & Convert.ToInt32(flag)) != 0;
+		}
+	}
 }

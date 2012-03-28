@@ -2,12 +2,12 @@
 using UnityEngine;
 
 [Entity("Crate", EntityCategory.Objects)]
-public class CrateHelper : ResizeableHelper
+public class CrateHelper : EntityHelper
 {
 	protected GameObject _crate;
 
 	[EntityProperty(Min = 1, Max = 100)]
-	public float Mass { get; set; }
+	public int Mass { get; set; }
 
 	public override void OnSpawn()
 	{
@@ -21,7 +21,7 @@ public class CrateHelper : ResizeableHelper
 			Destroy(_crate);
 
 		_crate = GameObject.CreatePrimitive(PrimitiveType.Cube);
-		_crate.transform.localScale = new Vector3(Width, Height, 2);
+		_crate.transform.localScale = new Vector3(Width, Height, Depth);
 		_crate.transform.position = transform.position;
 		_crate.transform.rotation = transform.rotation;
 		var rigidbody = _crate.AddComponent<Rigidbody>();

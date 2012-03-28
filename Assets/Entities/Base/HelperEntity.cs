@@ -4,6 +4,8 @@ using System.Collections;
 
 public class EntityHelper : Entity
 {
+	public const float Transparency = 0.6f;
+
 	protected MeshRenderer _renderer;
 	protected MeshFilter _filter;
 	protected BoxCollider _collider;
@@ -19,13 +21,27 @@ public class EntityHelper : Entity
 		gameObject.layer = LayerMask.NameToLayer("Unlit");
 	}
 
-	public override void OnEnableHelpers()
+	public IEnumerator Fadeout(bool fadeout)
 	{
-		_renderer.enabled = true;
-	}
-
-	public override void OnDisableHelpers()
-	{
-		_renderer.enabled = false;
+		if(fadeout)
+		{
+			while(renderer.material.color.a > 0)
+			{
+				var colour = renderer.material.color;
+				colour.a -= Time.deltaTime / 50;
+				renderer.material.color = colour;
+				yield return null;
+			}
+		}
+		else
+		{
+			while(renderer.material.color.a < Transparency)
+			{
+				var colour = renderer.material.color;
+				colour.a += Time.deltaTime / 50;
+				renderer.material.color = colour;
+				yield return null;
+			}
+		}
 	}
 }

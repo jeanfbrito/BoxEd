@@ -25,12 +25,25 @@ namespace BoxEd
 			foreach(var prop in GetType().GetProperties())
 			{
 				EntityPropertyAttribute propAttr;
-				if(prop.TryGetAttribute(out propAttr))
+				if(prop.TryGetAttribute(out propAttr) && ValidateProperty(prop, attr.Restrictions))
 					Properties.Add(prop, propAttr);
 			}
 
 			OnSpawn();
 			OnEnableHelpers();
+		}
+
+		private bool ValidateProperty(PropertyInfo property, RestrictedDefaults restrictions)
+		{
+			try
+			{
+				var flags = (RestrictedDefaults)Enum.Parse(typeof(RestrictedDefaults), property.Name);
+				return !flags.HasFlag(restrictions);
+			}
+			catch(ArgumentException)
+			{
+				return true;
+			}
 		}
 
 		/// <summary>
@@ -133,6 +146,43 @@ namespace BoxEd
 		}
 
 		public static Entity SelectedEntity { get; set; }
+		#endregion
+
+		#region Default Properties
+		[EntityProperty(Min = 0.5f, Max = 100)]
+		public float Width
+		{
+			get { return transform.localScale.x; }
+			set { transform.localScale = new Vector3(EditorController.SnapToGrid ? (float)Math.Round(value * 2, MidpointRounding.AwayFromZero) / 2 : value, transform.localScale.y, transform.localScale.z); }
+		}
+
+		[EntityProperty(Min = 0.5f, Max = 100)]
+		public float Height
+		{
+			get { return transform.localScale.y; }
+			set { transform.localScale = new Vector3(transform.localScale.x, EditorController.SnapToGrid ? (float)Math.Round(value * 2, MidpointRounding.AwayFromZero) / 2 : value, transform.localScale.z); }
+		}
+
+		[EntityProperty(Min = 0.5f, Max = 100)]
+		public float Depth
+		{
+			get { return transform.localScale.z; }
+			set { transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, EditorController.SnapToGrid ? (float)Math.Round(value * 2, MidpointRounding.AwayFromZero) / 2 : value); }
+		}
+
+		[EntityProperty(Min = 0, Max = 360)]
+		public int Rotation
+		{
+			get
+			{
+				return (int)transform.rotation.eulerAngles.z;
+			}
+			set
+			{
+				var rot = transform.rotation.eulerAngles;
+				transform.rotation = Quaternion.Euler(new Vector3(rot.x, rot.y, (int)System.Math.Round(value / 5f) * 5));
+			}
+		}
 		#endregion
 	}
 

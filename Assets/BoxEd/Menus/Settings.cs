@@ -17,7 +17,7 @@ namespace BoxEd.Gui
 		{
 			if(GUILayout.Button("Save Settings"))
 			{
-
+				
 			}
 		}
 	}

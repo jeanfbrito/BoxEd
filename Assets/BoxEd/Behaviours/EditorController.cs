@@ -73,7 +73,13 @@ public class EditorController : MonoBehaviour
 					ent.OnEnableHelpers();
 				else
 					ent.OnDisableHelpers();
+			
+				EntityHelper helper;
+				if((helper = ent as EntityHelper) != null)
+					helper.StartCoroutine(helper.Fadeout(!value));
 			}
+
+			_instance.StartCoroutine(FadeGrid(!value));
 		}
 	}
 	#endregion
@@ -106,7 +112,7 @@ public class EditorController : MonoBehaviour
 	private bool _movingEntity;
 	private int _planeLayer;
 
-	//private string[] _actionNames = Enum.GetNames(typeof(EditorState));
+	private IEnumerable<EditorState> _states = Enum.GetValues(typeof(EditorState)).Cast<EditorState>();
 	private Dictionary<EntityCategory, Dictionary<Type, string>> _entitiesByCategory;
 	#endregion
 
@@ -200,12 +206,7 @@ public class EditorController : MonoBehaviour
 		if(!Input.GetMouseButton(0))
 			_entitySelected = false;
 
-		if(Input.GetMouseButton(0) && _entitySelected)
-		{
-			_movingEntity = true;
-		}
-		else
-			_movingEntity = false;
+		_movingEntity = Input.GetMouseButton(0) && _entitySelected;
 
 		var screenMousePos = new Vector3(Input.mousePosition.x, Screen.height - Input.mousePosition.y, Input.mousePosition.z);
 
@@ -289,22 +290,21 @@ public class EditorController : MonoBehaviour
 		GUILayout.Window(0, EntityRect, DrawCreationWindow, "Entities");
 		GUILayout.Window(1, PropertyRect, DrawEditWindow, "Properties");
 
-		/*foreach(var action in _actionNames)
+		if(_states != null && _states.Count() > 1)
 		{
-			var stateFromString = (EditorState)Enum.Parse(typeof(EditorState), action);
-
-			GUILayout.BeginHorizontal();
+			foreach(var state in _states)
 			{
-				if(State == stateFromString)
-					GUILayout.Space(20);
+				GUILayout.BeginHorizontal();
+				{
+					if(State == state)
+						GUILayout.Space(20);
 
-				if(GUILayout.Button(action, GUILayout.Width(50), GUILayout.Height(50)))
-					State = stateFromString;
+					if(GUILayout.Button(state.ToString(), GUILayout.Width(50), GUILayout.Height(50)))
+						State = state;
+				}
+				GUILayout.EndHorizontal();
 			}
-			GUILayout.EndHorizontal();
-		}*/
-
-
+		}
 	}
 
 	private EntityCategory _selectedCategory = EntityCategory.Geometry;
@@ -345,6 +345,8 @@ public class EditorController : MonoBehaviour
 				propertyPair.Key.SetValue(entity, GUILayout.TextField((string)propertyPair.Key.GetValue(entity, null) ?? ""), null);
 			else if(type == typeof(float))
 				propertyPair.Key.SetValue(entity, GUILayout.HorizontalSlider((float)propertyPair.Key.GetValue(entity, null), attr.Min, attr.Max), null);
+			else if(type == typeof(int))
+				propertyPair.Key.SetValue(entity, (int)GUILayout.HorizontalSlider((int)propertyPair.Key.GetValue(entity, null), attr.Min, attr.Max), null);
 		}
 	}
 

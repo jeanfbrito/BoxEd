@@ -18,7 +18,7 @@ public class BaseLight : EntityHelper
 		transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 		_collider.extents = new Vector3(2, 2, 2);
 
-		_renderer.material.color = new Color(1, 1, 1, 0.5f);
+		_renderer.material.color = new Color(0.8f, 0.8f, 0.5f, Transparency);
 
 		//Don't cast light on unlit objects
 		var unlitLayer = LayerMask.NameToLayer("Unlit");

@@ -34,13 +34,25 @@ namespace BoxEd
 	{
 		public string Name { get; set; }
 		public EntityCategory Category { get; set; }
+		public RestrictedDefaults Restrictions { get; set; }
 
-		public EntityAttribute(string name) : this(name, EntityCategory.Misc) { }
-
-		public EntityAttribute(string name, EntityCategory category)
+		public EntityAttribute(string name, EntityCategory category = EntityCategory.Misc, RestrictedDefaults restrictions = RestrictedDefaults.None)
 		{
 			Name = name;
 			Category = category;
+			Restrictions = restrictions;
 		}
+	}
+
+	[Flags]
+	public enum RestrictedDefaults
+	{
+		None = 0,
+		Width = 1,
+		Height = 2,
+		Depth = 4,
+		Rotation = 8,
+		Transform = Width | Height | Depth,
+		All = Transform | Rotation
 	}
 }
