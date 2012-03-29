@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 namespace BoxEd
@@ -42,6 +43,17 @@ namespace BoxEd
 		{
 			if(Entity != null)
 				Entity.transform.Translate(-Movement, Space.World);
+		}
+	}
+
+	public class PropertyAction : EditorAction
+	{
+		public object Value { get; set; }
+		public PropertyInfo Property { get; set; }
+
+		public override void Revert()
+		{
+			Property.SetValue(Entity, Value, null);
 		}
 	}
 }

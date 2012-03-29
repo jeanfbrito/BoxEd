@@ -1,7 +1,7 @@
 ﻿using BoxEd;
 using UnityEngine;
 
-[Entity("Crate", EntityCategory.Objects)]
+[Entity("Crate", EntityCategory.Objects, Transforms.Scale | Transforms.RotationZ)]
 public class CrateHelper : EntityHelper
 {
 	protected GameObject _crate;

@@ -358,15 +358,16 @@ public class EditorController : MonoBehaviour
 			var property = propertyPair.Key;
 			var type = property.PropertyType;
 			var attr = propertyPair.Value;
+			var obj = property.GetValue(entity, null);
 
-			GUILayout.Label(propertyPair.Key.Name + ": " + property.GetValue(entity, null));
+			GUILayout.Label(property.Name + ": " + property.GetValue(entity, null));
 
 			if(type == typeof(string))
-				propertyPair.Key.SetValue(entity, GUILayout.TextField((string)propertyPair.Key.GetValue(entity, null) ?? ""), null);
+				property.SetValue(entity, GUILayout.TextField((string)obj ?? ""), null);
 			else if(type == typeof(float))
-				propertyPair.Key.SetValue(entity, GUILayout.HorizontalSlider((float)propertyPair.Key.GetValue(entity, null), attr.Min, attr.Max), null);
+				property.SetValue(entity, GUILayout.HorizontalSlider((float)obj, attr.Min, attr.Max), null);
 			else if(type == typeof(int))
-				propertyPair.Key.SetValue(entity, (int)GUILayout.HorizontalSlider((int)propertyPair.Key.GetValue(entity, null), attr.Min, attr.Max), null);
+				property.SetValue(entity, (int)GUILayout.HorizontalSlider((int)obj, attr.Min, attr.Max), null);
 		}
 	}
 
@@ -398,10 +399,6 @@ public class EditorController : MonoBehaviour
 						ShowHelpers = true;
 						_entitySpawned = true;
 						_entitySelected = true;
-
-						//FIXME: 9/3/12
-						_previousEditorState = EditorState.Edit;
-						State = EditorState.Edit;
 					}
 					GUILayout.Label(entityType.Value);
 

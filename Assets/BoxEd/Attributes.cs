@@ -48,12 +48,12 @@ namespace BoxEd
 	public enum Transforms
 	{
 		None = 0,
-		Width = 1,
-		Height = 2,
-		Depth = 4,
-		RotationX = 8,
-		RotationY = 16,
-		RotationZ = 32,
+		Width = 1 << 0,
+		Height = 1 << 2,
+		Depth = 1 << 3,
+		RotationX = 1 << 4,
+		RotationY = 1 << 5,
+		RotationZ = 1 << 6,
 		Scale = Width | Height | Depth,
 		Rotation = RotationX | RotationY | RotationZ,
 		All = Scale | Rotation
