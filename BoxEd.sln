@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{5A9512D6-1168-9934-C5D1-8BF2CF7CB57B}") = "BoxGuy", "Assembly-CSharp.csproj", "{052293B7-56D0-32DB-1D55-67CE3B1A71F9}"
+Project("{DFC21A5C-F575-0CEF-9FCE-B4FB25BC99F1}") = "BoxEd", "Assembly-CSharp.csproj", "{026BC34D-157C-A695-7B61-7573CA3A9DD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{052293B7-56D0-32DB-1D55-67CE3B1A71F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{052293B7-56D0-32DB-1D55-67CE3B1A71F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{052293B7-56D0-32DB-1D55-67CE3B1A71F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{052293B7-56D0-32DB-1D55-67CE3B1A71F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{026BC34D-157C-A695-7B61-7573CA3A9DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{026BC34D-157C-A695-7B61-7573CA3A9DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{026BC34D-157C-A695-7B61-7573CA3A9DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{026BC34D-157C-A695-7B61-7573CA3A9DD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																							GlobalSection(MonoDevelopProperties) = preSolution
+	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
@@ -35,5 +35,4 @@ Global
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
 	EndGlobalSection
-
 EndGlobal
