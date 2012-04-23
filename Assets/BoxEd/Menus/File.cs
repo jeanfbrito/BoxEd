@@ -16,7 +16,7 @@ namespace BoxEd.Gui
 
 		public override void OnLoad()
 		{
-#if !UNITY_WEBPLAYER
+#if !UNITY_WEBPLAYER || UNITY_EDITOR
 			Refresh();
 #endif
 		}
