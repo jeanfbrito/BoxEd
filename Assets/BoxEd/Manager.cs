@@ -142,7 +142,12 @@ namespace BoxEd
 		{
 			get
 			{
-				return Path.Combine(Application.persistentDataPath, "Levels");
+				var path = Path.Combine(Application.persistentDataPath, "Levels");
+
+				if(!Directory.Exists(path))
+					Directory.CreateDirectory(path);
+
+				return path;
 			}
 		}
 

@@ -16,12 +16,14 @@ namespace BoxEd.Gui
 
 		public override void OnLoad()
 		{
+#if !UNITY_WEBPLAYER
 			Refresh();
+#endif
 		}
 
 		public override void OnDraw()
 		{
-//If we're in the webplayer, then we should only offer the sample level because Unity has no IO access
+			//If we're in the webplayer, then we should only offer the sample level because Unity has no IO access
 #if UNITY_WEBPLAYER && !UNITY_EDITOR
 			GUILayout.Label("Saving and loading is not enabled in the web demo!");
 			if(GUILayout.Button("Try this sample level!"))
