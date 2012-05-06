@@ -83,7 +83,7 @@ namespace BoxEd
 			else
 			{
 				Editor.Log("Updating the webplayer demo. Content is: {0}", document.InnerXml);
-				document.Save(Path.Combine(Application.dataPath, @"Resources\Level 1.box.xml"));
+				document.Save(PathEx.Combine(Application.dataPath, "Resources", "Level 1.box.xml"));
 			}
 #endif
 		}
@@ -142,7 +142,7 @@ namespace BoxEd
 		{
 			get
 			{
-				var path = Path.Combine(Application.persistentDataPath, "Levels");
+				var path = PathEx.Combine(Application.persistentDataPath, "Levels");
 
 				if(!Directory.Exists(path))
 					Directory.CreateDirectory(path);
@@ -158,7 +158,7 @@ namespace BoxEd
 		/// <returns></returns>
 		public static string GetFilepath(string levelName)
 		{
-			return Path.Combine(LevelFolder, levelName + ".box");
+			return PathEx.Combine(LevelFolder, levelName + ".box");
 		}
 
 		/// <summary>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using System.IO;
 
 namespace BoxEd
 {
@@ -66,6 +67,14 @@ namespace BoxEd
 		public static bool HasFlag(this Enum value, Enum flag)
 		{
 			return (Convert.ToInt32(value) & Convert.ToInt32(flag)) != 0;
+		}
+	}
+
+	public static class PathEx
+	{
+		public static string Combine(params string[] args)
+		{
+			return args.Aggregate(Path.Combine);
 		}
 	}
 }
