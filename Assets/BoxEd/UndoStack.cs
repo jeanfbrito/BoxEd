@@ -32,7 +32,7 @@ namespace BoxEd
 	{
 		public Entity Entity { get; set; }
 
-		public virtual void Revert() { }
+		public abstract void Revert();
 	}
 
 	public class MoveAction : EditorAction
