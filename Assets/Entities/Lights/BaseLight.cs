@@ -9,6 +9,15 @@ public class BaseLight : EntityHelper
 	[EntityProperty(PropertyEditorType.Slider, Max = 8)]
 	public float Intensity { get { return _light.intensity; } set { _light.intensity = value; } }
 
+	[EntityProperty(PropertyEditorType.Slider, Max = 255)]
+	public int Red { get { return Mathf.RoundToInt(light.color.r * 255); } set { var colour = _light.color; colour.r = (float)value / 255; _light.color = colour; } }
+
+	[EntityProperty(PropertyEditorType.Slider, Max = 255)]
+	public int Blue { get { return Mathf.RoundToInt(light.color.b * 255); } set { var colour = _light.color; colour.b = (float)value / 255; _light.color = colour; } }
+
+	[EntityProperty(PropertyEditorType.Slider, Max = 255)]
+	public int Green { get { return Mathf.RoundToInt(light.color.g * 255); } set { var colour = _light.color; colour.g = (float)value / 255; _light.color = colour; } }
+
 	public override void OnSpawn()
 	{
 		base.OnSpawn();
@@ -22,6 +31,6 @@ public class BaseLight : EntityHelper
 
 		//Don't cast light on unlit objects
 		var unlitLayer = LayerMask.NameToLayer("Unlit");
-		_light.cullingMask &= ~(1 << unlitLayer); 
+		_light.cullingMask &= ~(1 << unlitLayer);
 	}
 }
