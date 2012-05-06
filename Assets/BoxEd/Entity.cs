@@ -202,7 +202,7 @@ namespace BoxEd
 		}
 
 		[EntityProperty(Min = 0, Max = 360)]
-		public int RotationZ
+		public int Rotation
 		{
 			get
 			{
