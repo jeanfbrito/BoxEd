@@ -30,13 +30,17 @@ public class MenuManager : MonoBehaviour
 			foreach(var menuType in Assembly.GetExecutingAssembly().GetTypes().Where(type => type != typeof(Menu) && typeof(Menu).IsAssignableFrom(type)))
 			{
 				var menu = Activator.CreateInstance(menuType) as Menu;
-				menu.Id = _menus.Count + 2;
 
 				//Extract the MenuAttribute, otherwise throw an exception
 				MenuAttribute attr;
 				if(menuType.TryGetAttribute<MenuAttribute>(out attr))
 				{
-					menu.Title = attr.Title;
+					if(attr.EditorOnly && !Application.isEditor)
+						continue;
+
+					menu.Id = _menus.Count + 1;
+
+					menu.Title = Localisation.BoxEd[attr.Title];
 					menu.Priority = attr.Priority;
 					_menus.Add(menu);
 
@@ -46,7 +50,7 @@ public class MenuManager : MonoBehaviour
 					menu.OnLoad();
 				}
 				else
-					throw new TypeLoadException(string.Format("Failed to initialise window of type {0}, verify that a MenuAttribute is assigned to your class.", menuType.Name));
+					Editor.LogError("Failed to initialise window of type {0}, verify that a MenuAttribute is assigned to your class.", menuType.Name);
 			}
 		});
 

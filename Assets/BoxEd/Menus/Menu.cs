@@ -23,6 +23,11 @@ namespace BoxEd.Gui
 		/// The priority for this menu in the menubar.
 		/// </summary>
 		public int Priority { get; set; }
+
+		/// <summary>
+		/// Controls whether the menu will be included in builds.
+		/// </summary>
+		public bool EditorOnly { get; set; }
 	}
 
 	/// <summary>
