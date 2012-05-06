@@ -15,7 +15,7 @@ namespace BoxEd.Gui
 
 		public override void OnDraw()
 		{
-			if(GUILayout.Button("Save Settings"))
+			if(GUILayout.Button(Localisation.BoxEd["Save"]))
 			{
 				
 			}

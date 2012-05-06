@@ -95,7 +95,6 @@ public class EditorController : MonoBehaviour
 		SnapToGrid = true;
 		ShowHelpers = true;
 		_planeLayer = _plane.layer;
-		Editor.Log("Layer is {0}, name is {1}", _planeLayer, LayerMask.LayerToName(_planeLayer));
 	}
 
 	#region Private Members
@@ -299,10 +298,10 @@ public class EditorController : MonoBehaviour
 
 		GUILayout.Space(30);
 
-		SnapToGrid = GUILayout.Toggle(SnapToGrid, "Snap to Grid");
-		ShowHelpers = GUILayout.Toggle(ShowHelpers, "Show Helpers");
+		SnapToGrid = GUILayout.Toggle(SnapToGrid, Localisation.BoxEd["Snap to Grid"]);
+		ShowHelpers = GUILayout.Toggle(ShowHelpers, Localisation.BoxEd["Show Helpers"]);
 
-		if(IsIngame && GUILayout.Button("Restart Objects"))
+		if(IsIngame && GUILayout.Button(Localisation.BoxEd["Restart Objects"]))
 		{
 			foreach(var entity in LevelManager.Find<Entity>())
 			{
@@ -311,8 +310,8 @@ public class EditorController : MonoBehaviour
 			}
 		}
 
-		GUILayout.Window(0, EntityRect, DrawCreationWindow, "Entities");
-		GUILayout.Window(1, PropertyRect, DrawEditWindow, "Properties");
+		GUILayout.Window(0, EntityRect, DrawCreationWindow, Localisation.BoxEd["Entities"]);
+		GUILayout.Window(1, PropertyRect, DrawEditWindow, Localisation.BoxEd["Properties"]);
 
 		if(_states != null && _states.Count() > 1)
 		{
@@ -337,7 +336,7 @@ public class EditorController : MonoBehaviour
 
 		if(entity == null)
 		{
-			GUILayout.Label("No entity selected.");
+			GUILayout.Label(Localisation.BoxEd["No entity selected."]);
 			return;
 		}
 
@@ -345,7 +344,7 @@ public class EditorController : MonoBehaviour
 		{
 			GUILayout.Label(entity.ClassName);
 
-			if(GUILayout.Button("Delete"))
+			if(GUILayout.Button(Localisation.BoxEd["Delete"]))
 			{
 				Destroy(entity.gameObject);
 				return;

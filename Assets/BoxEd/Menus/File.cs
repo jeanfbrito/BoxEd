@@ -23,20 +23,24 @@ namespace BoxEd.Gui
 
 		public override void OnDraw()
 		{
-			//If we're in the webplayer, then we should only offer the sample level because Unity has no IO access
-#if UNITY_WEBPLAYER && !UNITY_EDITOR
-			GUILayout.Label("Saving and loading is not enabled in the web demo!");
-			if(GUILayout.Button("Try this sample level!"))
+			// If we're in the webplayer, then we should only offer the sample level because Unity has no IO access
+			// We also allow in-editor 'testing' of this feature
+			if(Developer.IsFakingWebplayer || Application.isWebPlayer)
 			{
-				LevelManager.LoadLevel((Resources.Load("Level 1.box") as TextAsset).ToString(), true);
-				MenuManager.CloseMenu();
+				GUILayout.Label("Saving and loading is not enabled in the web demo!");
+				if(GUILayout.Button("Try this sample level!"))
+				{
+					LevelManager.LoadLevel((Resources.Load("Level 1.box") as TextAsset).ToString(), true);
+					MenuManager.CloseMenu();
+				}
+				return;
 			}
-#else
+
 			GUILayout.BeginHorizontal();
 			{
 				LevelManager.LevelName = GUILayout.TextField(LevelManager.LevelName);
 
-				if(GUILayout.Button("Save", GUILayout.Width(50)))
+				if(GUILayout.Button(Localisation.BoxEd["Save"], GUILayout.MaxWidth(100)))
 				{
 					LevelManager.SaveLevel(LevelManager.LevelName);
 					Refresh();
@@ -45,7 +49,7 @@ namespace BoxEd.Gui
 			GUILayout.EndHorizontal();
 
 			GUILayout.Space(20);
-			GUILayout.Label("Level Manager");
+			GUILayout.Label(Localisation.BoxEd["Level Manager"]);
 			GUILayout.Space(10);
 
 			foreach(var level in _levels)
@@ -53,13 +57,13 @@ namespace BoxEd.Gui
 				GUILayout.BeginHorizontal();
 				{
 					GUILayout.Label(level.Key);
-					if(GUILayout.Button("Load", GUILayout.Width(50)))
+					if(GUILayout.Button(Localisation.BoxEd["Load"], GUILayout.MaxWidth(100)))
 					{
 						LevelManager.LoadLevel(level.Key);
 						MenuManager.CloseMenu();
 					}
 
-					if(GUILayout.Button("Delete", GUILayout.Width(50)))
+					if(GUILayout.Button(Localisation.BoxEd["Delete"], GUILayout.MaxWidth(100)))
 					{
 						File.Delete(level.Value);
 						Refresh();
@@ -67,7 +71,6 @@ namespace BoxEd.Gui
 				}
 				GUILayout.EndHorizontal();
 			}
-#endif
 		}
 
 		/// <summary>
