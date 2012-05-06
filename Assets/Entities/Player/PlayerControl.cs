@@ -48,9 +48,9 @@ public class PlayerControl : MonoBehaviour
 	private GameObject prevWallGrabObj;
 	private GameObject wallGrabObj;
 
-	Vector3 acceleration;
-	float inputReplacement;
-	float controlMultiplier;
+	private Vector3 acceleration;
+	private float inputReplacement;
+	private float controlMultiplier;
 
 	/// <summary>
 	/// Set up a few base things, mostly other components.
@@ -76,6 +76,8 @@ public class PlayerControl : MonoBehaviour
 		transform.position = Checkpoint.CurrentCheckpoint != null ? Checkpoint.CurrentCheckpoint.transform.position :
 			LevelManager.Find<Spawnpoint>().Count() > 0 ? LevelManager.Find<Spawnpoint>().First().transform.position :
 			Vector3.zero;
+
+		playerState = PlayerState.InAirFromWall;
 
 		rigidbody.velocity = Vector3.zero;
 	}
