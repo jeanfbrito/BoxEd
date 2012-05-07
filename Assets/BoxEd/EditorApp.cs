@@ -3,15 +3,20 @@ using UnityEngine;
 
 namespace BoxEd
 {
+	public delegate bool SystemInitFunc();
+
 	public static class Editor
 	{
 		public static Version Version { get { return new Version(0, 1); } }
 
-		public static void InitSystem(string systemName, Action initFunc)
+		public static void InitSystem(string systemName, SystemInitFunc initFunc)
 		{
 			Editor.Log("Initialising {0}...", systemName);
-			initFunc.Invoke();
-			Editor.Log("Initialised {0} successfully!", systemName);
+
+			if(initFunc.Invoke())
+				Editor.Log("Initialised {0} successfully!", systemName);
+			else
+				Editor.LogError("Initialisation for {0} failed!", systemName);
 		}
 
 		public static void Log(string format, params object[] args)

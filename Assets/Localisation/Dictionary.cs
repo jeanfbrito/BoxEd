@@ -12,7 +12,11 @@ namespace BoxEd
 
 		public static void LoadLanguage(string languageCode)
 		{
-			Editor.InitSystem(string.Format("Localisation ({0})", languageCode), () => BoxEd = LocaleDictionary.Load(Resources.Load("Editor") as TextAsset, languageCode));
+			Editor.InitSystem(String.Format("Localisation ({0})", languageCode), () =>
+			{
+				BoxEd = LocaleDictionary.Load(Resources.Load("Editor") as TextAsset, languageCode);
+				return BoxEd != null;
+			});
 		}
 	}
 

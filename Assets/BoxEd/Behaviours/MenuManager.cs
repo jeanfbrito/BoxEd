@@ -52,6 +52,8 @@ public class MenuManager : MonoBehaviour
 				else
 					Editor.LogError("Failed to initialise window of type {0}, verify that a MenuAttribute is assigned to your class.", menuType.Name);
 			}
+
+			return true;
 		});
 
 		_menus.Sort((m1, m2) => m1.Priority.CompareTo(m2.Priority));
