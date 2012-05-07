@@ -13,7 +13,7 @@ namespace BoxEd
 		{
 			Editor.Log("Initialising {0}...", systemName);
 
-			if(initFunc.Invoke())
+			if(initFunc())
 				Editor.Log("Initialised {0} successfully!", systemName);
 			else
 				Editor.LogError("Initialisation for {0} failed!", systemName);

@@ -228,7 +228,7 @@ public class EditorController : MonoBehaviour
 		var screenMousePos = new Vector3(Input.mousePosition.x, Screen.height - Input.mousePosition.y, Input.mousePosition.z);
 
 		var rayResult = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out entityHitInfo, 100, ~_planeLayer) && !_movingEntity
-			&& !EntityRect.Contains(screenMousePos) && !PropertyRect.Contains(screenMousePos);
+			&& !EntityRect.Contains(screenMousePos) && !PropertyRect.Contains(screenMousePos) && !MenuManager.MouseOverGui;
 
 		if(rayResult)
 		{
@@ -253,7 +253,7 @@ public class EditorController : MonoBehaviour
 		{
 			case EditorState.Edit:
 				{
-					if(hasEntity)
+					if(hasEntity && !MenuManager.MouseOverGui)
 					{
 						if((Input.GetKey(KeyCode.LeftApple) || Input.GetKey(KeyCode.LeftControl)) && Input.GetKeyDown(KeyCode.C))
 							_entity = Entity.Create<Entity>(_mousePos, _entity.transform.rotation.eulerAngles, _entity.transform.localScale, _entity.GetType());
@@ -298,10 +298,10 @@ public class EditorController : MonoBehaviour
 
 		GUILayout.Space(30);
 
-		SnapToGrid = GUILayout.Toggle(SnapToGrid, Localisation.BoxEd["Snap to Grid"]);
-		ShowHelpers = GUILayout.Toggle(ShowHelpers, Localisation.BoxEd["Show Helpers"]);
+		SnapToGrid = GUILayout.Toggle(SnapToGrid, new GUIContent(Localisation.BoxEd["Snap to Grid"], MenuManager.Tooltip));
+		ShowHelpers = GUILayout.Toggle(ShowHelpers, new GUIContent(Localisation.BoxEd["Show Helpers"], MenuManager.Tooltip));
 
-		if(IsIngame && GUILayout.Button(Localisation.BoxEd["Restart Objects"]))
+		if(IsIngame && GUILayout.Button(new GUIContent(Localisation.BoxEd["Restart Objects"], MenuManager.Tooltip)))
 		{
 			foreach(var entity in LevelManager.Find<Entity>())
 			{
@@ -310,8 +310,8 @@ public class EditorController : MonoBehaviour
 			}
 		}
 
-		GUILayout.Window(0, EntityRect, DrawCreationWindow, Localisation.BoxEd["Entities"]);
-		GUILayout.Window(1, PropertyRect, DrawEditWindow, Localisation.BoxEd["Properties"]);
+		GUILayout.Window(0, EntityRect, DrawCreationWindow, new GUIContent(Localisation.BoxEd["Entities"], MenuManager.Tooltip));
+		GUILayout.Window(1, PropertyRect, DrawEditWindow,  new GUIContent(Localisation.BoxEd["Properties"], MenuManager.Tooltip));
 
 		if(_states != null && _states.Count() > 1)
 		{
@@ -328,6 +328,9 @@ public class EditorController : MonoBehaviour
 				GUILayout.EndHorizontal();
 			}
 		}
+
+		if(GUI.tooltip == MenuManager.Tooltip)
+			MenuManager.MouseOverGui = true;
 	}
 
 	private void DrawEditWindow(int id)
@@ -372,8 +375,6 @@ public class EditorController : MonoBehaviour
 
 	private void DrawCreationWindow(int id)
 	{
-		//GUI.skin = EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector);
-
 		GUILayout.BeginHorizontal();
 		{
 			foreach(var categoryEntry in _entitiesByCategory)

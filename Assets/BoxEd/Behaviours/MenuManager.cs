@@ -8,13 +8,15 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-	#region Boring Stuff
 	public void Awake()
 	{
 		Refresh();
 	}
 
 	public static bool IsMenuOpen { get { return _activeMenu != null; } }
+
+	public static bool MouseOverGui { get; set; }
+	public const string Tooltip = " ";
 	
 	/// <summary>
 	/// Refreshes the menu manager and reloads all menus.
@@ -58,7 +60,12 @@ public class MenuManager : MonoBehaviour
 
 		_menus.Sort((m1, m2) => m1.Priority.CompareTo(m2.Priority));
 	}
-	
+
+	void LateUpdate()
+	{
+		Debug.Log(MouseOverGui);
+		MouseOverGui = false;
+	}
 
 	public static Menu OpenMenu<T>() where T : Menu
 	{
@@ -73,7 +80,6 @@ public class MenuManager : MonoBehaviour
 
 	private static List<Menu> _menus;
 	private static Menu _activeMenu;
-	#endregion
 
 	private void OnGUI()
 	{
@@ -88,14 +94,14 @@ public class MenuManager : MonoBehaviour
 		{
 			GUILayout.Space(5);
 
-			if(GUILayout.Button(EditorController.IsIngame ? "Exit Game" : "Enter Game"))
+			if(GUILayout.Button(new GUIContent(EditorController.IsIngame ? "Exit Game" : "Enter Game", MenuManager.Tooltip)))
 				EditorController.IsIngame = !EditorController.IsIngame;
 
 			if(!EditorController.IsIngame)
 			{
 				foreach(var menu in _menus)
 				{
-					if(GUILayout.Button(menu.Title))
+					if(GUILayout.Button(new GUIContent(menu.Title, MenuManager.Tooltip)))
 						_activeMenu = (_activeMenu != menu) ? menu : null;
 				}
 			}
@@ -106,5 +112,8 @@ public class MenuManager : MonoBehaviour
 
 		if(_activeMenu != null)
 			GUI.Window(_activeMenu.Id, new Rect(Screen.width / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), _activeMenu.Draw, _activeMenu.Title);
+
+		if(GUI.tooltip == Tooltip)
+			MouseOverGui = true;
 	}
 }
